@@ -1,5 +1,7 @@
 import flet as ft
 from config.config import supabase
+import time
+import asyncio
 
 
 class FetchingEventsRecords(ft.Container):
@@ -9,11 +11,15 @@ class FetchingEventsRecords(ft.Container):
         #  =========== the list for the records here ======== //
         self.all_records = []
 
-
-    def fetch_events_record(self):
+    async def fetch_events_record(self):
         try:
+            await asyncio.sleep(2)
             data, count = supabase.table("Artists").select("*").execute()
             # =========== checking if the data is available here ======== //
+            if not data:
+                print("no available records")
+            else:
+                print("records are available")
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
