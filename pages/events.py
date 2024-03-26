@@ -37,6 +37,9 @@ class Events(ft.Container):
             "Manrope-SemiBold": "assets/fonts/Manrope/static/Manrope-SemiBold.ttf",
             "Manrope-Regular": "assets/fonts/Manrope/static/Manrope-Regular.ttf"
         }
+        #  ============ all the functions will be called here ========== //
+        self.fetch_records = FetchingEventsRecords(page=page)
+        self.fetch_records.fetch_events_record()
         # ============== // passing the controls to the page here ======== //
         self.content = ft.SafeArea(
             content=ft.Column(
