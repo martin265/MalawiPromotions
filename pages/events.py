@@ -19,6 +19,9 @@ class FetchingEventsRecords(ft.Container):
         self.color = ""
         self.color = random.choice(self.all_card_colors)
 
+        # ================== the container for the available artists here ======== //
+        self.available_artists = ft.Container(expand=True)
+
     def fetch_events_record(self):
         try:
             time.sleep(2)
@@ -33,10 +36,11 @@ class FetchingEventsRecords(ft.Container):
 
                 for element in data_list:
                     print(element["first_name"])
-                    print(self.color)
-
-
-
+                    self.available_artists.content = ft.Column(
+                        controls=[
+                            ft.Text(f"{element['first_name']}")
+                        ]
+                    )
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
@@ -70,7 +74,7 @@ class Events(ft.Container):
                                     content=ft.Row(
                                         alignment=ft.MainAxisAlignment.CENTER,
                                         controls=[
-
+                                            self.fetch_records.available_artists
                                         ]
                                     )
                                 )
