@@ -10,6 +10,7 @@ class FetchingEventsRecords(ft.Container):
         self.page = page
         #  =========== the list for the records here ======== //
         self.all_records = []
+        self.temporary_records = []
 
     def fetch_events_record(self):
         try:
@@ -18,7 +19,10 @@ class FetchingEventsRecords(ft.Container):
             if not data:
                 print("no available records")
             else:
-                print("records are available")
+                self.all_records.append(data)
+                self.temporary_records = self.all_records[0].data
+                for element in self.temporary_records:
+                    print(element)
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
