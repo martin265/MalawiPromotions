@@ -2,6 +2,7 @@ import flet as ft
 from config.config import supabase
 import time
 import asyncio
+import json
 
 
 class FetchingEventsRecords(ft.Container):
@@ -19,10 +20,17 @@ class FetchingEventsRecords(ft.Container):
             if not data:
                 print("no available records")
             else:
-                self.all_records.append(data)
-                self.temporary_records = self.all_records[0].data
-                for element in self.temporary_records:
-                    print(element)
+                data_tuple = data
+                data_list = data_tuple[1]
+                # first_names = [artist['first_name'] for artist in data_list]
+
+                for element in data_list:
+                    print(element["last_name"])
+                # self.temporary_records = self.all_records[0]
+                # for single_record in self.temporary_records:
+                #     for element in single_record:
+                #         print(element)
+
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
