@@ -10,8 +10,6 @@ class FetchingEventsRecords(ft.Container):
         super().__init__()
         self.page = page
         #  =========== the list for the records here ======== //
-        self.all_records = []
-        self.temporary_records = []
 
     def fetch_events_record(self):
         try:
@@ -26,10 +24,7 @@ class FetchingEventsRecords(ft.Container):
 
                 for element in data_list:
                     print(element["last_name"])
-                # self.temporary_records = self.all_records[0]
-                # for single_record in self.temporary_records:
-                #     for element in single_record:
-                #         print(element)
+
 
 
         except Exception as ex:
