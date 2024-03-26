@@ -1,10 +1,23 @@
 import flet as ft
+from config.config import supabase
 
 
 class FetchingEventsRecords(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
         self.page = page
+        #  =========== the list for the records here ======== //
+        self.all_records = []
+
+
+    def fetch_events_record(self):
+        try:
+            data, count = supabase.table("Artists").select("*").execute()
+            # =========== checking if the data is available here ======== //
+
+        except Exception as ex:
+            print("something wrong at {}".format(ex))
+
 
 class Events(ft.Container):
     def __init__(self, page: ft.Page):
