@@ -1,8 +1,7 @@
 import flet as ft
 from config.config import supabase
 import time
-import asyncio
-import json
+import random
 
 
 class FetchingEventsRecords(ft.Container):
@@ -14,8 +13,11 @@ class FetchingEventsRecords(ft.Container):
             "#412728",
             "#7F4D3E",
             "#4B4A54",
-            "#3A2F0B"
+            "#3A2F0B",
+            "#523F4F"
         ]
+        self.color = ""
+        self.color = random.choice(self.all_card_colors)
 
     def fetch_events_record(self):
         try:
@@ -30,7 +32,9 @@ class FetchingEventsRecords(ft.Container):
                 # first_names = [artist['first_name'] for artist in data_list]
 
                 for element in data_list:
-                    print(element["last_name"])
+                    print(element["first_name"])
+                    print(self.color)
+
 
 
 
@@ -66,12 +70,7 @@ class Events(ft.Container):
                                     content=ft.Row(
                                         alignment=ft.MainAxisAlignment.CENTER,
                                         controls=[
-                                            ft.Text(
-                                                "latest events".title(),
-                                                size=30,
-                                                weight=ft.FontWeight.BOLD,
-                                                color="#2A272A"
-                                            )
+
                                         ]
                                     )
                                 )
