@@ -10,9 +10,16 @@ class FetchingEventsRecords(ft.Container):
         super().__init__()
         self.page = page
         #  =========== the list for the records here ======== //
+        self.all_card_colors = [
+            "#412728",
+            "#7F4D3E",
+            "#4B4A54",
+            "#3A2F0B"
+        ]
 
     def fetch_events_record(self):
         try:
+            time.sleep(2)
             data, count = supabase.table("Artists").select("*").execute()
             # =========== checking if the data is available here ======== //
             if not data:
