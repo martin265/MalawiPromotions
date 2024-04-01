@@ -44,7 +44,9 @@ class Explore(ft.Container):
                                                         content=ft.Row(
                                                             controls=[
                                                                 ft.Icon(
-                                                                    ft.icons.MUSIC_NOTE_ROUNDED
+                                                                    ft.icons.MUSIC_NOTE_ROUNDED,
+                                                                    size=30,
+                                                                    color=ft.colors.WHITE
                                                                 )
                                                             ]
                                                         )
