@@ -15,7 +15,7 @@ class ArtistPage(ft.View):
                                 controls=[
                                     ft.IconButton(
                                         icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=self.route_change
+                                        on_click=self.view_pop
                                     )
                                 ]
                             )
@@ -25,8 +25,10 @@ class ArtistPage(ft.View):
             )
         )
 
-    def route_change(self, e):
-        print(f"initial route {self.page.route}")
+    def view_pop(self, e):
+        self.page.views.pop()
+        top_view = self.page.views[-1]
+        self.page.go(top_view.route)
 
 
 class Explore(ft.Container):
