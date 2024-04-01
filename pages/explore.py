@@ -1,11 +1,9 @@
 import flet as ft
 
 
-class RouterPages(ft.View):
+class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
-        self.page.adaptive = True
-        self.page.scroll = ft.ScrollMode.HIDDEN
         self.page.fonts = {
             "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
             "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
@@ -26,9 +24,6 @@ class RouterPages(ft.View):
         )
 
 
-
-
-
 class Explore(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
@@ -41,7 +36,8 @@ class Explore(ft.Container):
             "Manrope-SemiBold": "assets/fonts/Manrope/static/Manrope-SemiBold.ttf",
             "Manrope-Regular": "assets/fonts/Manrope/static/Manrope-Regular.ttf"
         }
-
+        self.artist_page = ArtistPage(page=page)
+        self.page.on_route_change = self.router
         # ============= adding the page controls here ============= //
         self.content = ft.SafeArea(
             adaptive=True,
@@ -127,7 +123,8 @@ class Explore(ft.Container):
                                                         )
                                                     )
                                                 ]
-                                            )
+                                            ),
+                                            on_click=lambda e: self.page.go("/artist")
                                         ),
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
@@ -283,6 +280,11 @@ class Explore(ft.Container):
             )
         )
 
-
     def router(self, route):
+        """the function to loop through the page here"""
+        self.page.views.clear()
+        if self.page.route == "/artist":
+            self.page.views.append(self.artist_page)
+
+        self.page.update()
 
