@@ -294,7 +294,6 @@ class Explore(ft.Container):
         )
 
     def router(self, route):
-        self.page.views.clear()
         if self.page.route == "/artist":
             self.page.views.append(self.artist_page)
 
