@@ -38,10 +38,15 @@ class Explore(ft.Container):
                                     content=ft.Column(
                                         controls=[
                                             ft.Container(
+                                                padding=ft.padding.only(bottom=20, top=20),
                                                 content=ft.Row(
+                                                    alignment=ft.MainAxisAlignment.CENTER,
                                                     controls=[
                                                         ft.Text(
-                                                            "explore".capitalize()
+                                                            "explore".capitalize(),
+                                                            size=50,
+                                                            color="#212121",
+                                                            weight=ft.FontWeight.BOLD
                                                         )
                                                     ]
                                                 )
