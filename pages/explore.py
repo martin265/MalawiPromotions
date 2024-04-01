@@ -72,6 +72,7 @@ class Explore(ft.Container):
                                                                     "artist".capitalize(),
                                                                     size=30,
                                                                     weight=ft.FontWeight.BOLD,
+                                                                    color="white"
                                                                 )
                                                             ]
                                                         )
