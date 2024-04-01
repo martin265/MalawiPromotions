@@ -6,6 +6,7 @@ class RouterPages(ft.View):
         super().__init__(route="/artist")
 
 
+
 class Explore(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
