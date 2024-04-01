@@ -24,12 +24,12 @@ class Explore(ft.Container):
                         adaptive=True,
                         controls=[
                             ft.Container(
-                                expand=True,
-                                bgcolor="blue"
+                                bgcolor="blue",
+                                content=ft.Text("Explore")
                             ),
                             ft.Container(
-                                expand=True,
-                                bgcolor="black"
+                                bgcolor="black",
+                                content=ft.Text("Explore")
                             )
                         ]
                     )
