@@ -31,7 +31,7 @@ def main(page: ft.Page):
     home_page = HomePage(page=page)
     events_page = Events(page=page)
     explore_page = Explore(page=page)
-    main_content = ft.Column([events_page])
+    main_content = ft.Column([home_page])
 
     # ============ transitioning the pages here ============= //
     async def selected_page_destination(e):

@@ -46,6 +46,7 @@ class Explore(ft.Container):
                 controls=[
                     # =========== the container for all features ============ //
                     ft.Container(
+                        margin=ft.margin.only(top=40),
                         gradient=ft.LinearGradient(
                             colors=[
                                 ft.colors.SURFACE_VARIANT,
