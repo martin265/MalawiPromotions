@@ -20,7 +20,13 @@ class Explore(ft.Container):
             content=ft.Column(
                 controls=[
                     # =========== the container for all features ============ //
-                    ft.Container()
+                    ft.ResponsiveRow(
+                        adaptive=True,
+                        controls=[
+                            ft.Container(),
+                            ft.Container()
+                        ]
+                    )
                 ]
             )
         )
