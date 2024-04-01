@@ -14,11 +14,14 @@ class ArtistPage(ft.View):
                                 controls=[
                                     ft.IconButton(
                                         icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=self.view_pop
+                                        on_click=self.view_pop,
+                                        icon_size=20,
+                                        bgcolor=ft.colors.SURFACE_VARIANT
                                     )
                                 ]
                             )
-                        )
+                        ),
+
                     ]
                 )
             )
