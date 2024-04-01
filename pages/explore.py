@@ -23,8 +23,14 @@ class Explore(ft.Container):
                     ft.ResponsiveRow(
                         adaptive=True,
                         controls=[
-                            ft.Container(),
-                            ft.Container()
+                            ft.Container(
+                                expand=True,
+                                bgcolor="blue"
+                            ),
+                            ft.Container(
+                                expand=True,
+                                bgcolor="black"
+                            )
                         ]
                     )
                 ]
