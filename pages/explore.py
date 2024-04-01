@@ -1,29 +1,17 @@
 import flet as ft
 
 
-class ArtistPage(ft.View):
+class ArtistView(ft.Container):
     def __init__(self, page: ft.Page):
-        super().__init__(route="/artist")
-        self.controls.append(
-            ft.SafeArea(
-                adaptive=True,
-                content=ft.Column(
-                    controls=[
-                        ft.Container(
-                            content=ft.Row(
-                                controls=[
-                                    ft.IconButton(
-                                        icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=lambda e: self.page.go("/")
-                                    )
-                                ]
-                            )
-                        )
-                    ]
-                )
+        super().__init__()
+        self.page = page
+        self.content = ft.SafeArea(
+            content=ft.Column(
+                controls=[
+                    ft.Text("artist page")
+                ]
             )
         )
-
 
 class Explore(ft.Container):
     def __init__(self, page: ft.Page):
@@ -31,7 +19,7 @@ class Explore(ft.Container):
         self.page = page
         self.page.adaptive = True
         self.page.scroll = ft.ScrollMode.HIDDEN
-        self.current_value = ft.Text()
+        self.main_content = ft.Column([])
         self.page.fonts = {
             "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
             "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
@@ -174,8 +162,10 @@ class Explore(ft.Container):
                                                         )
                                                     )
                                                 ]
-                                            )
+                                            ),
+                                            on_click=self.get_current_container
                                         ),
+
                                     ]
                                 ),
 
@@ -227,7 +217,8 @@ class Explore(ft.Container):
                                                         )
                                                     )
                                                 ]
-                                            )
+                                            ),
+                                            on_click=self.get_current_container
                                         ),
 
                                         # ============== // the other card will be here =========== //
@@ -277,7 +268,8 @@ class Explore(ft.Container):
                                                         )
                                                     )
                                                 ]
-                                            )
+                                            ),
+                                            on_click=self.get_current_container
                                         ),
                                     ]
                                 )
@@ -291,5 +283,11 @@ class Explore(ft.Container):
     def get_current_container(self, e):
         if e.control.data == 1:
             print("first clicked container")
+        elif e.control.data == 2:
+            print("second container clicked")
+        elif e.control.data == 3:
+            print("third container clicked")
+        elif e.control.data == 4:
+            print("last container clicked")
 
 
