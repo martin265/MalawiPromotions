@@ -33,6 +33,22 @@ class Explore(ft.Container):
                         border_radius=ft.border_radius.all(10),
                         content=ft.Column(
                             controls=[
+                                # =========== the top container for the top title ========= //
+                                ft.Container(
+                                    content=ft.Column(
+                                        controls=[
+                                            ft.Container(
+                                                content=ft.Row(
+                                                    controls=[
+                                                        ft.Text(
+                                                            ""
+                                                        )
+                                                    ]
+                                                )
+                                            )
+                                        ]
+                                    )
+                                ),
                                 ft.Row(
                                     controls=[
                                         ft.Container(
