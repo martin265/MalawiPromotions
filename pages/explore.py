@@ -1,15 +1,26 @@
 import flet as ft
 
 
-class ArtistView(ft.Container):
+class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
-        super().__init__()
-        self.page = page
-        self.content = ft.SafeArea(
-            content=ft.Column(
-                controls=[
-                    ft.Text("artist page")
-                ]
+        super().__init__(route="/artist")
+        self.controls.append(
+            ft.SafeArea(
+                adaptive=True,
+                content=ft.Column(
+                    controls=[
+                        ft.Container(
+                            content=ft.Row(
+                                controls=[
+                                    ft.IconButton(
+                                        icon=ft.icons.ARROW_BACK_ROUNDED,
+                                        on_click=lambda e: self.page.go("/")
+                                    )
+                                ]
+                            )
+                        )
+                    ]
+                )
             )
         )
 
@@ -20,8 +31,8 @@ class Explore(ft.Container):
         self.page = page
         self.page.adaptive = True
         self.page.scroll = ft.ScrollMode.HIDDEN
-        self.artists_page = ArtistView(page=page)
-        self.main_content = ft.Column([self.artists_page])
+        self.artist_page = ArtistPage(page=page)
+        self.page.on_route_change = self.router
         self.page.fonts = {
             "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
             "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
@@ -116,7 +127,7 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click=self.get_current_container
+                                            on_click=lambda e: self.page.go("/artist")
 
                                         ),
                                         # ================ // the other card will be here ========= //
@@ -165,7 +176,7 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click=self.get_current_container
+
                                         ),
 
                                     ]
@@ -220,7 +231,7 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click=self.get_current_container
+
                                         ),
 
                                         # ============== // the other card will be here =========== //
@@ -271,7 +282,7 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click=self.get_current_container
+
                                         ),
                                     ]
                                 )
@@ -282,15 +293,12 @@ class Explore(ft.Container):
             )
         )
 
-    def get_current_container(self, e):
-        if e.control.data == 1:
-            self.main_content.controls.append(
-                ft.Text("hello")
-            )
-            self.main_content.update()
-        elif e.control.data == 2:
-            print("second container clicked")
-        elif e.control.data == 3:
-            print("third container clicked")
-        elif e.control.data == 4:
-            print("last container clicked")
+    def router(self, route):
+        self.page.views.clear()
+        if self.page.route == "/artist":
+            self.page.views.append(self.artist_page)
+
+        self.page.update()
+
+
+
