@@ -4,7 +4,6 @@ import flet as ft
 class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
-        self.explore = Explore(page=page)
         self.controls.append(
             ft.SafeArea(
                 adaptive=True,
@@ -15,7 +14,7 @@ class ArtistPage(ft.View):
                                 controls=[
                                     ft.IconButton(
                                         icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=lambda e: self.page.go(self.explore)
+                                        on_click=lambda e: self.page.go("/")
                                     )
                                 ]
                             )
@@ -284,7 +283,6 @@ class Explore(ft.Container):
 
     def router(self, route):
         """the function to loop through the page here"""
-        self.page.views.clear()
         if self.page.route == "/artist":
             self.page.views.append(self.artist_page)
 
