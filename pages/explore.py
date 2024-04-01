@@ -41,7 +41,7 @@ class Explore(ft.Container):
                                                 content=ft.Row(
                                                     controls=[
                                                         ft.Text(
-                                                            ""
+                                                            "explore".capitalize()
                                                         )
                                                     ]
                                                 )
