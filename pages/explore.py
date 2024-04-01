@@ -46,7 +46,7 @@ class Explore(ft.Container):
                 controls=[
                     # =========== the container for all features ============ //
                     ft.Container(
-                        margin=ft.margin.only(top=50),
+                        margin=ft.margin.only(top=40),
                         gradient=ft.LinearGradient(
                             colors=[
                                 ft.colors.SURFACE_VARIANT,
@@ -230,6 +230,7 @@ class Explore(ft.Container):
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
                                             expand=True,
+                                            margin=ft.margin.only(bottom=30),
                                             gradient=ft.LinearGradient(
                                                 colors=[
                                                     "#007842",
