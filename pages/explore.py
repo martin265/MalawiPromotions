@@ -50,7 +50,7 @@ class Explore(ft.Container):
                                                 controls=[
                                                     # -========== container for the top icon
                                                     ft.Container(
-                                                        margin=ft.margin.only(top=30, left=20),
+                                                        margin=ft.margin.only(top=30),
                                                         content=ft.Row(
                                                             alignment=ft.MainAxisAlignment.CENTER,
                                                             controls=[
@@ -58,6 +58,20 @@ class Explore(ft.Container):
                                                                     ft.icons.MUSIC_NOTE_ROUNDED,
                                                                     size=50,
                                                                     color=ft.colors.WHITE
+                                                                )
+                                                            ]
+                                                        )
+                                                    ),
+
+                                                    ft.Container(
+                                                        margin=ft.margin.only(top=6),
+                                                        content=ft.Row(
+                                                            alignment=ft.MainAxisAlignment.CENTER,
+                                                            controls=[
+                                                                ft.Text(
+                                                                    "artist".capitalize(),
+                                                                    size=30,
+                                                                    weight=ft.FontWeight.BOLD,
                                                                 )
                                                             ]
                                                         )
