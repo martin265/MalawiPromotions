@@ -1,6 +1,11 @@
 import flet as ft
 
 
+class RouterPages(ft.View):
+    def __init__(self, page: ft.Page):
+        super().__init__(route="/artist")
+
+
 class Explore(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
