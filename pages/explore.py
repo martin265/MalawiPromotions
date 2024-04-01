@@ -13,6 +13,7 @@ class ArtistView(ft.Container):
             )
         )
 
+
 class Explore(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
@@ -283,12 +284,13 @@ class Explore(ft.Container):
 
     def get_current_container(self, e):
         if e.control.data == 1:
-            print("first clicked container")
+            self.main_content.controls.clear()  # ========= removing the default controls
+            self.main_content.controls.append(
+                ft.Text("hello")
+            )
         elif e.control.data == 2:
             print("second container clicked")
         elif e.control.data == 3:
             print("third container clicked")
         elif e.control.data == 4:
             print("last container clicked")
-
-
