@@ -31,6 +31,7 @@ class Explore(ft.Container):
         self.page = page
         self.page.adaptive = True
         self.page.scroll = ft.ScrollMode.HIDDEN
+        self.current_value = ft.Text()
         self.page.fonts = {
             "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
             "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
@@ -125,7 +126,8 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click={}
+                                            on_click=self.get_current_container
+
                                         ),
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
@@ -286,7 +288,8 @@ class Explore(ft.Container):
             )
         )
 
-    def router(self, route):
-        """the function to loop through the page here"""
+    def get_current_container(self, e):
+        if e.control.data == 1:
+            print("first clicked container")
 
 
