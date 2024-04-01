@@ -27,8 +27,30 @@ class Explore(ft.Container):
                                     controls=[
                                         ft.Container(
                                             expand=True,
-                                            bgcolor="blue",
-                                            content=ft.Text("Explore")
+                                            gradient=ft.LinearGradient(
+                                                colors=[
+                                                    "#412728",
+                                                    "#7F4D3E"
+                                                ],
+                                                begin=ft.alignment.top_left,
+                                                end=ft.alignment.bottom_left
+                                            ),
+                                            border_radius=ft.border_radius.all(9),
+                                            content=ft.Column(
+                                                controls=[
+                                                    # -========== container for the top icon
+                                                    ft.Container(
+                                                        margin=ft.margin.only(top=30, left=20),
+                                                        content=ft.Row(
+                                                            controls=[
+                                                                ft.Icon(
+                                                                    ft.icons.MUSIC_NOTE_ROUNDED
+                                                                )
+                                                            ]
+                                                        )
+                                                    )
+                                                ]
+                                            )
                                         ),
                                         ft.Container(
                                             expand=True,
