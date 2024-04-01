@@ -1,6 +1,7 @@
 import flet as ft
 from pages.home import HomePage
 from pages.events import Events
+from pages.explore import Explore
 
 
 def main(page: ft.Page):
@@ -29,6 +30,7 @@ def main(page: ft.Page):
     # ============= passing all the pages here ================ //
     home_page = HomePage(page=page)
     events_page = Events(page=page)
+    explore_page = Explore(page=page)
     main_content = ft.Column([events_page])
 
     # ============ transitioning the pages here ============= //
@@ -46,6 +48,12 @@ def main(page: ft.Page):
                 main_content.controls.clear()
                 main_content.controls.append(events_page)
                 main_content.update()
+
+            elif e.control.selected_index == 2:
+                main_content.controls.clear()
+                main_content.controls.append(explore_page)
+                main_content.update()
+
         except Exception as ex:
             page.snack_bar = ft.SnackBar(
                 content=ft.Row(
