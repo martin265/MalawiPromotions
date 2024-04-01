@@ -282,3 +282,7 @@ class Explore(ft.Container):
                 ]
             )
         )
+
+
+    def router(self, route):
+
