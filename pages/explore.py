@@ -21,15 +21,36 @@ class Explore(ft.Container):
                 controls=[
                     # =========== the container for all features ============ //
                     ft.Container(
-                        content=ft.Row(
+                        content=ft.Column(
                             controls=[
-                                ft.Container(
-                                    bgcolor="blue",
-                                    content=ft.Text("Explore")
+                                ft.Row(
+                                    controls=[
+                                        ft.Container(
+                                            expand=True,
+                                            bgcolor="blue",
+                                            content=ft.Text("Explore")
+                                        ),
+                                        ft.Container(
+                                            expand=True,
+                                            bgcolor="black",
+                                            content=ft.Text("Explore")
+                                        )
+                                    ]
                                 ),
-                                ft.Container(
-                                    bgcolor="black",
-                                    content=ft.Text("Explore")
+
+                                ft.Row(
+                                    controls=[
+                                        ft.Container(
+                                            expand=True,
+                                            bgcolor="blue",
+                                            content=ft.Text("Explore")
+                                        ),
+                                        ft.Container(
+                                            expand=True,
+                                            bgcolor="black",
+                                            content=ft.Text("Explore")
+                                        )
+                                    ]
                                 )
                             ]
                         )
