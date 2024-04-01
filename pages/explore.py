@@ -13,3 +13,14 @@ class Explore(ft.Container):
             "Manrope-SemiBold": "assets/fonts/Manrope/static/Manrope-SemiBold.ttf",
             "Manrope-Regular": "assets/fonts/Manrope/static/Manrope-Regular.ttf"
         }
+
+        # ============= adding the page controls here ============= //
+        self.content = ft.SafeArea(
+            adaptive=True,
+            content=ft.Column(
+                controls=[
+                    # =========== the container for all features ============ //
+                    ft.Container()
+                ]
+            )
+        )
