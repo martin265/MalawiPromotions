@@ -284,7 +284,6 @@ class Explore(ft.Container):
 
     def get_current_container(self, e):
         if e.control.data == 1:
-            self.main_content.controls.clear()  # ========= removing the default controls
             self.main_content.controls.append(
                 ft.Text("hello")
             )
