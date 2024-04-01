@@ -29,6 +29,8 @@ class Explore(ft.Container):
                             begin=ft.alignment.top_left,
                             end=ft.alignment.bottom_center
                         ),
+                        padding=ft.padding.all(10),
+                        border_radius=ft.border_radius.all(10),
                         content=ft.Column(
                             controls=[
                                 ft.Row(
