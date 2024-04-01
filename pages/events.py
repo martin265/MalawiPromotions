@@ -35,7 +35,6 @@ class FetchingEventsRecords(ft.Container):
                 # first_names = [artist['first_name'] for artist in data_list]
 
                 for element in data_list:
-                    print(element["first_name"])
                     self.available_artists.content = ft.Column(
                         expand=True,
                         controls=[
