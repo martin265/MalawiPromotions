@@ -4,7 +4,7 @@ import flet as ft
 class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
-        self.explore = Explore(page-page)
+        self.explore = Explore(page=page)
         self.controls.append(
             ft.SafeArea(
                 adaptive=True,
