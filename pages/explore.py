@@ -37,8 +37,6 @@ class Explore(ft.Container):
             "Manrope-SemiBold": "assets/fonts/Manrope/static/Manrope-SemiBold.ttf",
             "Manrope-Regular": "assets/fonts/Manrope/static/Manrope-Regular.ttf"
         }
-        self.artist_page = ArtistPage(page=page)
-        self.page.on_route_change = self.router
         # ============= adding the page controls here ============= //
         self.content = ft.SafeArea(
             adaptive=True,
@@ -83,6 +81,7 @@ class Explore(ft.Container):
                                 ft.Row(
                                     controls=[
                                         ft.Container(
+                                            data=1,
                                             expand=True,
                                             gradient=ft.LinearGradient(
                                                 colors=[
@@ -126,11 +125,12 @@ class Explore(ft.Container):
                                                     )
                                                 ]
                                             ),
-                                            on_click=lambda e: self.page.go("/artist")
+                                            on_click={}
                                         ),
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
                                             expand=True,
+                                            data=2,
                                             gradient=ft.LinearGradient(
                                                 colors=[
                                                     "#4B4A54",
@@ -181,7 +181,9 @@ class Explore(ft.Container):
                                     controls=[
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
+                                            margin=ft.margin.only(bottom=30),
                                             expand=True,
+                                            data=3,
                                             gradient=ft.LinearGradient(
                                                 colors=[
                                                     "#009DCE",
@@ -230,6 +232,7 @@ class Explore(ft.Container):
                                         # ================ // the other card will be here ========= //
                                         ft.Container(
                                             expand=True,
+                                            data=4,
                                             margin=ft.margin.only(bottom=30),
                                             gradient=ft.LinearGradient(
                                                 colors=[
@@ -285,8 +288,5 @@ class Explore(ft.Container):
 
     def router(self, route):
         """the function to loop through the page here"""
-        if self.page.route == "/artist":
-            self.page.views.append(self.artist_page)
 
-        self.page.update()
 
