@@ -26,6 +26,7 @@ class ArtistPage(ft.View):
         )
 
     def view_pop(self, e):
+        """the function to pop out the views will be here"""
         self.page.views.pop()
         top_view = self.page.views[-1]
         self.page.go(top_view.route)
