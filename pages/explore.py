@@ -288,6 +288,7 @@ class Explore(ft.Container):
             self.main_content.controls.append(
                 ft.Text("hello")
             )
+            self.main_content.update()
         elif e.control.data == 2:
             print("second container clicked")
         elif e.control.data == 3:
