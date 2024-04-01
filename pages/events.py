@@ -37,8 +37,9 @@ class FetchingEventsRecords(ft.Container):
                 for element in data_list:
                     print(element["first_name"])
                     self.available_artists.content = ft.Column(
+                        expand=True,
                         controls=[
-                            ft.Text(f"{element['first_name']}")
+                            
                         ]
                     )
 
