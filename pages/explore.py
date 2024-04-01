@@ -4,7 +4,26 @@ import flet as ft
 class RouterPages(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
-
+        self.page.adaptive = True
+        self.page.scroll = ft.ScrollMode.HIDDEN
+        self.page.fonts = {
+            "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
+            "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
+            "Manrope-SemiBold": "assets/fonts/Manrope/static/Manrope-SemiBold.ttf",
+            "Manrope-Regular": "assets/fonts/Manrope/static/Manrope-Regular.ttf"
+        }
+        self.controls.append(
+            ft.SafeArea(
+                adaptive=True,
+                content=ft.Column(
+                    controls=[
+                        ft.Text(
+                            "hello artist page"
+                        )
+                    ]
+                )
+            )
+        )
 
 
 class Explore(ft.Container):
