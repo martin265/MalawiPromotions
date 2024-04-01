@@ -21,6 +21,14 @@ class Explore(ft.Container):
                 controls=[
                     # =========== the container for all features ============ //
                     ft.Container(
+                        gradient=ft.LinearGradient(
+                            colors=[
+                                ft.colors.SURFACE_VARIANT,
+                                ft.colors.SURFACE_VARIANT
+                            ],
+                            begin=ft.alignment.top_left,
+                            end=ft.alignment.bottom_center
+                        ),
                         content=ft.Column(
                             controls=[
                                 ft.Row(
