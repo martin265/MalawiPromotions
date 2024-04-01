@@ -184,8 +184,8 @@ class Explore(ft.Container):
                                             expand=True,
                                             gradient=ft.LinearGradient(
                                                 colors=[
-                                                    "#4B4A54",
-                                                    "#2A272A"
+                                                    "#007842",
+                                                    "#00876D"
                                                 ],
                                                 begin=ft.alignment.top_left,
                                                 end=ft.alignment.bottom_left
@@ -200,7 +200,7 @@ class Explore(ft.Container):
                                                             alignment=ft.MainAxisAlignment.CENTER,
                                                             controls=[
                                                                 ft.Icon(
-                                                                    ft.icons.AIRPLANE_TICKET_ROUNDED,
+                                                                    ft.icons.CONTACT_MAIL_ROUNDED,
                                                                     size=50,
                                                                     color=ft.colors.WHITE
                                                                 )
@@ -214,7 +214,7 @@ class Explore(ft.Container):
                                                             alignment=ft.MainAxisAlignment.CENTER,
                                                             controls=[
                                                                 ft.Text(
-                                                                    "tickets".capitalize(),
+                                                                    "contact".capitalize(),
                                                                     size=30,
                                                                     weight=ft.FontWeight.BOLD,
                                                                     color="white"
