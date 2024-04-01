@@ -19,7 +19,8 @@ class Explore(ft.Container):
         self.page = page
         self.page.adaptive = True
         self.page.scroll = ft.ScrollMode.HIDDEN
-        self.main_content = ft.Column([])
+        self.artists_page = ArtistView(page=page)
+        self.main_content = ft.Column([self.artists_page])
         self.page.fonts = {
             "manrope-bold": "fonts/Manrope/static/Manrope-Bold.ttf",
             "Manrope-Light": "assets/fonts/Manrope/static/Manrope-Light.ttf",
