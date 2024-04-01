@@ -80,11 +80,52 @@ class Explore(ft.Container):
                                                 ]
                                             )
                                         ),
+                                        # ================ // the other card will be here ========= //
                                         ft.Container(
                                             expand=True,
-                                            bgcolor="black",
-                                            content=ft.Text("Explore")
-                                        )
+                                            gradient=ft.LinearGradient(
+                                                colors=[
+                                                    "#4B4A54",
+                                                    "#2A272A"
+                                                ],
+                                                begin=ft.alignment.top_left,
+                                                end=ft.alignment.bottom_left
+                                            ),
+                                            border_radius=ft.border_radius.all(9),
+                                            content=ft.Column(
+                                                controls=[
+                                                    # -========== container for the top icon
+                                                    ft.Container(
+                                                        margin=ft.margin.only(top=30),
+                                                        content=ft.Row(
+                                                            alignment=ft.MainAxisAlignment.CENTER,
+                                                            controls=[
+                                                                ft.Icon(
+                                                                    ft.icons.AIRPLANE_TICKET_ROUNDED,
+                                                                    size=50,
+                                                                    color=ft.colors.WHITE
+                                                                )
+                                                            ]
+                                                        )
+                                                    ),
+
+                                                    ft.Container(
+                                                        margin=ft.margin.only(top=6),
+                                                        content=ft.Row(
+                                                            alignment=ft.MainAxisAlignment.CENTER,
+                                                            controls=[
+                                                                ft.Text(
+                                                                    "tickets".capitalize(),
+                                                                    size=30,
+                                                                    weight=ft.FontWeight.BOLD,
+                                                                    color="white"
+                                                                )
+                                                            ]
+                                                        )
+                                                    )
+                                                ]
+                                            )
+                                        ),
                                     ]
                                 ),
 
