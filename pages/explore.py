@@ -1,4 +1,5 @@
 import flet as ft
+from pages.events import Events
 
 
 class ArtistPage(ft.View):
@@ -14,7 +15,7 @@ class ArtistPage(ft.View):
                                 controls=[
                                     ft.IconButton(
                                         icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=lambda e: self.page.go("/")
+                                        on_click=self.route_change
                                     )
                                 ]
                             )
@@ -23,6 +24,9 @@ class ArtistPage(ft.View):
                 )
             )
         )
+
+    def route_change(self, e):
+        print(f"initial route {self.page.route}")
 
 
 class Explore(ft.Container):
@@ -298,6 +302,3 @@ class Explore(ft.Container):
             self.page.views.append(self.artist_page)
 
         self.page.update()
-
-
-
