@@ -52,6 +52,7 @@ class Explore(ft.Container):
                                                     ft.Container(
                                                         margin=ft.margin.only(top=30, left=20),
                                                         content=ft.Row(
+                                                            alignment=ft.MainAxisAlignment.CENTER,
                                                             controls=[
                                                                 ft.Icon(
                                                                     ft.icons.MUSIC_NOTE_ROUNDED,
