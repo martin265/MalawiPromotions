@@ -94,6 +94,24 @@ class EventsPage(ft.Container):
                                                 )
                                             ]
                                         )
+                                    ),
+
+                                    ft.Container(
+                                        content=ft.Column(
+                                            controls=[
+                                                ft.Row(
+                                                    controls=[
+                                                        ft.Icon(
+                                                            ft.icons.AIRPLANE_TICKET_ROUNDED,
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(f"{element["ticket_type"]}")
+                                                    ]
+                                                )
+                                            ]
+                                        )
                                     )
                                 ]
                             )
