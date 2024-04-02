@@ -1,6 +1,6 @@
 import flet as ft
 from pages.home import HomePage
-from pages.events import Events
+from pages.events import EventsPage
 from pages.explore import Explore
 
 
@@ -29,9 +29,9 @@ def main(page: ft.Page):
 
     # ============= passing all the pages here ================ //
     home_page = HomePage(page=page)
-    events_page = Events(page=page)
+    events_page = EventsPage(page=page)
     explore_page = Explore(page=page)
-    main_content = ft.Column([home_page])
+    main_content = ft.Column([events_page])
 
     # ============ transitioning the pages here ============= //
     async def selected_page_destination(e):

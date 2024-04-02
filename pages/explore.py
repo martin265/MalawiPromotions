@@ -1,5 +1,4 @@
 import flet as ft
-from pages.events import Events
 from views.artist_view import ArtistPage
 
 
