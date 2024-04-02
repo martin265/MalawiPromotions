@@ -8,13 +8,11 @@ class ArtistPage(ft.View):
         self.page = page
         self.all_artists = ft.Column([])
         self.artist_details = ft.Text()
-        self.page.scroll = ft.ScrollMode.HIDDEN
+        self.page.scroll = ft.ScrollMode.ADAPTIVE
         self.controls = [
             ft.SafeArea(
                 adaptive=True,
                 content=ft.Column(
-                    scroll=ft.ScrollMode.HIDDEN,
-                    height=self.page.height,
                     controls=[
                         ft.Container(
                             adaptive=True,
@@ -69,7 +67,7 @@ class ArtistPage(ft.View):
 
                         # ================ // container for the details here ===== //
                         ft.Container(
-                            margin=ft.margin.only(top=10),
+                            margin=ft.margin.only(top=10, bottom=10),
                             content=ft.Column(
 
                                 controls=[
