@@ -46,9 +46,9 @@ class HomePage(ft.Container):
                                     adaptive=True,
                                     content=ft.Image(
                                         expand=True,
-                                        src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg"
-                                            "?auto=compress&cs=tinysrgb&w=600",
+                                        src="https://images.pexels.com/photos/1306791/pexels-photo-1306791.jpeg?auto=compress&cs=tinysrgb&w=600",
                                         border_radius=ft.border_radius.all(10),
+
 
                                     ),
                                 ),

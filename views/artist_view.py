@@ -12,17 +12,48 @@ class ArtistPage(ft.View):
                 content=ft.Column(
                     controls=[
                         ft.Container(
-                            content=ft.Row(
+                            gradient=ft.LinearGradient(
+                                colors=[
+                                    ft.colors.SURFACE_VARIANT,
+                                    ft.colors.SURFACE_VARIANT
+                                ],
+                                begin=ft.alignment.top_left,
+                                end=ft.alignment.bottom_center
+                            ),
+                            border_radius=ft.border_radius.all(10),
+                            content=ft.Column(
                                 controls=[
-                                    ft.IconButton(
-                                        icon=ft.icons.ARROW_BACK_ROUNDED,
-                                        on_click=self.view_pop,
-                                        icon_size=20,
-                                        bgcolor=ft.colors.SURFACE_VARIANT
+                                    ft.Container(
+                                        margin=ft.margin.all(10),
+                                        content=ft.Row(
+                                            controls=[
+                                                ft.IconButton(
+                                                    bgcolor="#212121",
+                                                    icon_size=30,
+                                                    icon=ft.icons.ARROW_BACK_ROUNDED,
+                                                    on_click=self.view_pop,
+                                                    icon_color="white"
+                                                )
+                                            ]
+                                        )
+                                    ),
+
+
+                                    # ============ container for the page header will be here ======= //
+                                    ft.Container(
+                                        content=ft.Row(
+                                            alignment=ft.MainAxisAlignment.CENTER,
+                                            controls=[
+                                                ft.Text(
+
+                                                )
+                                            ]
+                                        )
                                     )
                                 ]
                             )
                         ),
+
 
                     ]
                 )
