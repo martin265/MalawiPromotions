@@ -9,6 +9,7 @@ class EventsPage(ft.Container):
         self.page = page
         self.all_events = ft.Column([])
         self.fetch_all_events()
+        self.current_id = ft.Text()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -67,6 +68,7 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
+                            data=element["id"],
                             gradient=ft.LinearGradient(
                                 colors=[
                                     "#282828",
@@ -176,7 +178,7 @@ class EventsPage(ft.Container):
                                                             ft.ElevatedButton(
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click={}
+                                                                on_click=self.current_id_func
                                                             )
                                                         ]
                                                     )
@@ -200,3 +202,8 @@ class EventsPage(ft.Container):
             )
             self.page.snack_bar.open = True
             self.page.update()
+
+    def current_id_func(self, e):
+        self.current_id = e.control.data["id"]
+        print(self.current_id)
+
