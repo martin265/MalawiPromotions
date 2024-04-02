@@ -60,20 +60,20 @@ class ArtistPage(ft.View):
                                         )
                                     ),
 
-                                    # ================ // container for the details here ===== //
-                                    ft.Container(
-                                        margin=ft.margin.only(top=40),
-                                        content=ft.Column(
-                                            controls=[
-                                                self.all_artists
-                                            ]
-                                        )
-                                    )
+
                                 ]
                             )
                         ),
 
-
+                        # ================ // container for the details here ===== //
+                        ft.Container(
+                            margin=ft.margin.only(top=40),
+                            content=ft.Column(
+                                controls=[
+                                    self.all_artists
+                                ]
+                            )
+                        )
                     ]
                 )
             )
