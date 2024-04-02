@@ -120,7 +120,7 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"{element["ticket_price"]}", color="white", size=24)
+                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=24)
                                                     ]
                                                 )
                                             ]
