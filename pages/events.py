@@ -1,7 +1,6 @@
 import flet as ft
 from config.config import supabase
 import time
-import asyncio
 
 
 class EventsPage(ft.Container):
@@ -112,7 +111,7 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"{element["ticket_type"]}", color="white", size=24)
+                                                        ft.Text(f"{element["ticket_type"]}", color="white", size=20)
                                                     ]
                                                 ),
 
