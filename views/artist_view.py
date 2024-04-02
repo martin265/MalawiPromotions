@@ -127,8 +127,8 @@ class ArtistPage(ft.View):
                                                         ft.Text(
                                                             f"{element["first_name"]}",
                                                             color="white",
-                                                            size=30,
-                                                            weight=ft.FontWeight.BOLD
+                                                            size=20,
+                                                            weight=ft.FontWeight.W_500
                                                         )
                                                     ]
                                                 )
