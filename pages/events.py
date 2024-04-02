@@ -185,6 +185,18 @@ class EventsPage(ft.Container):
 
                                                         ft.Text(f"{element["payment_method"]}", color="white", size=20)
                                                     ]
+                                                ),
+
+                                                ft.Container(
+                                                    content=ft.Row(
+                                                        controls=[
+                                                            ft.ElevatedButton(
+                                                                text="purchase ticket".capitalize(),
+                                                                icon=ft.icons.SHOPPING_CART_ROUNDED,
+                                                                on_click={}
+                                                            )
+                                                        ]
+                                                    )
                                                 )
                                             ]
                                         )
