@@ -43,7 +43,7 @@ class ArtistPage(ft.View):
 
                                     # ============ container for the page header will be here ======= //
                                     ft.Container(
-                                        padding=ft.padding.only(top=30),
+                                        padding=ft.padding.only(top=30, bottom=20),
                                         adaptive=True,
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
