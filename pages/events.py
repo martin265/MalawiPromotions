@@ -26,8 +26,8 @@ class EventsPage(ft.Container):
                                             ft.Text(
                                                 "available events".title(),
                                                 size=24,
-                                                weight=ft.FontWeight.W_500,
-                                                color="#0078D9"
+                                                weight=ft.FontWeight.BOLD,
+                                                color="#212121"
                                             )
                                         ]
                                     )
@@ -75,7 +75,6 @@ class EventsPage(ft.Container):
                                 begin=ft.alignment.top_left,
                                 end=ft.alignment.bottom_center
                             ),
-                            border=ft.border.all(0.8, "#eceff1"),
                             border_radius=ft.border_radius.all(10),
                             content=ft.Column(
                                 controls=[
@@ -188,6 +187,7 @@ class EventsPage(ft.Container):
                                                 ),
 
                                                 ft.Container(
+                                                    adaptive=True,
                                                     content=ft.Row(
                                                         controls=[
                                                             ft.ElevatedButton(
