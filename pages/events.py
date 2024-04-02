@@ -147,7 +147,7 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"K {element["event_name"]}", color="white", size=20)
+                                                        ft.Text(f"{element["event_name"]}", color="white", size=20)
                                                     ]
                                                 ),
 
@@ -165,7 +165,7 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
+                                                        ft.Text(f"{element["ticket_price"]}", color="white", size=20)
                                                     ]
                                                 ),
 
@@ -183,7 +183,7 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"K {element["payment_method"]}", color="white", size=20)
+                                                        ft.Text(f"{element["payment_method"]}", color="white", size=20)
                                                     ]
                                                 )
                                             ]
