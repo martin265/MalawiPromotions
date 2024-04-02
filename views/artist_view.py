@@ -41,11 +41,15 @@ class ArtistPage(ft.View):
 
                                     # ============ container for the page header will be here ======= //
                                     ft.Container(
+                                        padding=ft.padding.only(top=30),
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
                                             controls=[
                                                 ft.Text(
-
+                                                    "check out artists",
+                                                    size=30,
+                                                    weight=ft.FontWeight.BOLD,
+                                                    color="#212121"
                                                 )
                                             ]
                                         )
