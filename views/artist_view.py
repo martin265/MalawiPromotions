@@ -5,8 +5,10 @@ from config.config import supabase
 class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
+        self.page = page
         self.all_artists = ft.Column([])
         self.artist_details = ft.Text()
+        self.page.scroll = ft.ScrollMode.AUTO
         self.controls.append(
             ft.SafeArea(
                 adaptive=True,
