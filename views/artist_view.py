@@ -8,8 +8,8 @@ class ArtistPage(ft.View):
         self.page = page
         self.all_artists = ft.Column([])
         self.artist_details = ft.Text()
-        self.page.scroll = ft.ScrollMode.AUTO
-        self.controls.append(
+        self.page.scroll = ft.ScrollMode.HIDDEN
+        self.controls = [
             ft.SafeArea(
                 adaptive=True,
                 content=ft.Column(
@@ -43,7 +43,6 @@ class ArtistPage(ft.View):
                                         )
                                     ),
 
-
                                     # ============ container for the page header will be here ======= //
                                     ft.Container(
                                         padding=ft.padding.only(top=30, bottom=20),
@@ -62,7 +61,6 @@ class ArtistPage(ft.View):
                                         )
                                     ),
 
-
                                 ]
                             )
                         ),
@@ -79,7 +77,7 @@ class ArtistPage(ft.View):
                     ]
                 )
             )
-        )
+        ]
 
         self.fetching_all_artists()
 
