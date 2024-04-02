@@ -67,7 +67,7 @@ class ArtistPage(ft.View):
 
                         # ================ // container for the details here ===== //
                         ft.Container(
-                            margin=ft.margin.only(top=40),
+                            margin=ft.margin.only(top=10),
                             content=ft.Column(
                                 controls=[
                                     self.all_artists
@@ -103,10 +103,25 @@ class ArtistPage(ft.View):
                         ft.Column(
                             controls=[
                                 ft.Container(
-                                    content=ft.Row(
+                                    adaptive=True,
+                                    gradient=ft.LinearGradient(
+                                        colors=[
+                                            "#4B4A54",
+                                            "#2A272A"
+                                        ],
+                                        begin=ft.alignment.top_left,
+                                        end=ft.alignment.bottom_center
+                                    ),
+                                    border_radius=ft.border_radius.all(10),
+                                    content=ft.Column(
                                         controls=[
-                                            ft.Text(
-                                                "details"
+                                            # ============== container for the top image ======= //
+                                            ft.Container(
+                                                content=ft.Row(
+                                                    controls=[
+                                                        ft.Image
+                                                    ]
+                                                )
                                             )
                                         ]
                                     )
