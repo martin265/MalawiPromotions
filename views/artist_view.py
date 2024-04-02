@@ -2,6 +2,10 @@ import flet as ft
 from config.config import supabase
 
 
+class TicketsPage(ft.Container):
+    def __init__(self, page: ft.Page):
+        super().__init__()
+
 class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
@@ -129,6 +133,17 @@ class ArtistPage(ft.View):
                                                             color="white",
                                                             size=20,
                                                             weight=ft.FontWeight.W_500
+                                                        )
+                                                    ]
+                                                )
+                                            ),
+
+                                            # ============== // container for the biography ====== //
+                                            ft.Container(
+                                                content=ft.Row(
+                                                    controls=[
+                                                        ft.Text(
+                                                            f"{element["artist_biography"]}"
                                                         )
                                                     ]
                                                 )
