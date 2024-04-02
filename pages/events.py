@@ -68,15 +68,15 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
-                            # gradient=ft.LinearGradient(
-                            #     colors=[
-                            #         "#282828",
-                            #         "#353535"
-                            #     ],
-                            #     begin=ft.alignment.top_left,
-                            #     end=ft.alignment.bottom_center
-                            # ),
-                            bgcolor="#282828",
+                            gradient=ft.LinearGradient(
+                                colors=[
+                                    "#282828",
+                                    "#353535"
+                                ],
+                                begin=ft.alignment.top_left,
+                                end=ft.alignment.bottom_center
+                            ),
+                            border=ft.border.all(0.8, "#eceff1"),
                             border_radius=ft.border_radius.all(8),
                             content=ft.Column(
                                 controls=[
