@@ -123,9 +123,8 @@ class ArtistPage(ft.View):
                                             ft.Container(
                                                 content=ft.Row(
                                                     controls=[
-                                                        ft.Image(
-                                                            src="https://images.pexels.com/photos/185030/pexels-photo"
-                                                                "-185030.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                                        ft.Text(
+                                                            f"{element["first_name"]}"
                                                         )
                                                     ]
                                                 )
