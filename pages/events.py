@@ -97,17 +97,30 @@ class EventsPage(ft.Container):
                                     ),
 
                                     ft.Container(
+                                        padding=ft.padding.all(20),
                                         content=ft.Column(
                                             controls=[
                                                 ft.Row(
                                                     controls=[
                                                         ft.Icon(
                                                             ft.icons.AIRPLANE_TICKET_ROUNDED,
-                                                            size=20,
+                                                            size=24,
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"{element["ticket_type"]}")
+                                                        ft.Text(f"{element["ticket_type"]}", color="white", size=24)
+                                                    ]
+                                                ),
+
+                                                ft.Row(
+                                                    controls=[
+                                                        ft.Icon(
+                                                            ft.icons.MONEY_ROUNDED,
+                                                            size=24,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(f"{element["ticket_price"]}", color="white", size=24)
                                                     ]
                                                 )
                                             ]
