@@ -68,19 +68,21 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
-                            gradient=ft.LinearGradient(
-                                colors=[
-                                    "#282828",
-                                    "#353535"
-                                ],
-                                begin=ft.alignment.top_left,
-                                end=ft.alignment.bottom_center
-                            ),
+                            # gradient=ft.LinearGradient(
+                            #     colors=[
+                            #         "#282828",
+                            #         "#353535"
+                            #     ],
+                            #     begin=ft.alignment.top_left,
+                            #     end=ft.alignment.bottom_center
+                            # ),
+                            bgcolor="#282828",
                             border_radius=ft.border_radius.all(8),
                             content=ft.Column(
                                 controls=[
                                     # ========= container for the icon will be here ==== //
                                     ft.Container(
+                                        bgcolor="#353535",
                                         padding=ft.padding.only(top=40),
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
