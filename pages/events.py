@@ -68,7 +68,7 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
-                            data=element,
+
                             gradient=ft.LinearGradient(
                                 colors=[
                                     "#282828",
@@ -176,6 +176,7 @@ class EventsPage(ft.Container):
                                                     content=ft.Row(
                                                         controls=[
                                                             ft.ElevatedButton(
+                                                                data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
                                                                 on_click=self.current_id_func
@@ -205,5 +206,5 @@ class EventsPage(ft.Container):
 
     def current_id_func(self, e):
         self.current_id = e.control.data["id"]
-        print(self.current_id)
+        print(f"{self.current_id}")
 
