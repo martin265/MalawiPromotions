@@ -68,7 +68,7 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
-                            data=element["id"],
+                            data=element,
                             gradient=ft.LinearGradient(
                                 colors=[
                                     "#282828",
