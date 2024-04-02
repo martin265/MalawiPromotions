@@ -121,6 +121,7 @@ class ArtistPage(ft.View):
                                         controls=[
                                             # ============== container for the top image ======= //
                                             ft.Container(
+                                                padding=ft.padding.only(30),
                                                 content=ft.Row(
                                                     controls=[
                                                         ft.Text(
