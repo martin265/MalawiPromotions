@@ -114,23 +114,6 @@ class EventsPage(ft.Container):
                                                     ]
                                                 ),
 
-                                                ft.Row(
-                                                    controls=[
-                                                        ft.Icon(
-                                                            ft.icons.MONEY_ROUNDED,
-                                                            size=20,
-                                                            color="white"
-                                                        ),
-
-                                                        ft.Text(
-                                                            "ticket  price: ".capitalize(),
-                                                            size=20,
-                                                            color="white"
-                                                        ),
-
-                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
-                                                    ]
-                                                ),
 
                                                 ft.Row(
                                                     controls=[
