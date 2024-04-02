@@ -123,6 +123,12 @@ class EventsPage(ft.Container):
                                                             color="white"
                                                         ),
 
+                                                        ft.Text(
+                                                            "ticket type: ".capitalize(),
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
                                                         ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
                                                     ]
                                                 )
