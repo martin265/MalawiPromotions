@@ -124,12 +124,66 @@ class EventsPage(ft.Container):
                                                         ),
 
                                                         ft.Text(
-                                                            "ticket type: ".capitalize(),
+                                                            "ticket  price: ".capitalize(),
                                                             size=20,
                                                             color="white"
                                                         ),
 
                                                         ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
+                                                    ]
+                                                ),
+
+                                                ft.Row(
+                                                    controls=[
+                                                        ft.Icon(
+                                                            ft.icons.EVENT_AVAILABLE_ROUNDED,
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(
+                                                            "event name : ".capitalize(),
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(f"K {element["event_name"]}", color="white", size=20)
+                                                    ]
+                                                ),
+
+                                                ft.Row(
+                                                    controls=[
+                                                        ft.Icon(
+                                                            ft.icons.PRICE_CHECK_ROUNDED,
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(
+                                                            "ticket  price: ".capitalize(),
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
+                                                    ]
+                                                ),
+
+                                                ft.Row(
+                                                    controls=[
+                                                        ft.Icon(
+                                                            ft.icons.PAYMENT_ROUNDED,
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(
+                                                            "payment method: ".capitalize(),
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(f"K {element["payment_method"]}", color="white", size=20)
                                                     ]
                                                 )
                                             ]
