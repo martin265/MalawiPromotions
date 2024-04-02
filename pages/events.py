@@ -102,7 +102,13 @@ class EventsPage(ft.Container):
                                                     controls=[
                                                         ft.Icon(
                                                             ft.icons.AIRPLANE_TICKET_ROUNDED,
-                                                            size=24,
+                                                            size=20,
+                                                            color="white"
+                                                        ),
+
+                                                        ft.Text(
+                                                            "ticket type: ".capitalize(),
+                                                            size=20,
                                                             color="white"
                                                         ),
 
@@ -114,11 +120,11 @@ class EventsPage(ft.Container):
                                                     controls=[
                                                         ft.Icon(
                                                             ft.icons.MONEY_ROUNDED,
-                                                            size=24,
+                                                            size=20,
                                                             color="white"
                                                         ),
 
-                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=24)
+                                                        ft.Text(f"K {element["ticket_price"]}", color="white", size=20)
                                                     ]
                                                 )
                                             ]
