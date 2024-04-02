@@ -1,5 +1,7 @@
 import flet as ft
 from config.config import supabase
+import time
+import asyncio
 
 
 class EventsPage(ft.Container):
@@ -7,7 +9,7 @@ class EventsPage(ft.Container):
         super().__init__()
         self.page = page
         self.all_events = ft.Column([])
-
+        self.fetch_all_events()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -32,7 +34,6 @@ class EventsPage(ft.Container):
                                     )
                                 ),
 
-
                                 # ================= the container for the events here ======== //
                                 ft.Container(
                                     margin=ft.margin.only(top=20),
@@ -50,11 +51,10 @@ class EventsPage(ft.Container):
             )
         )
 
-        self.fetch_all_events()
-
     def fetch_all_events(self):
         """function will be used to fetch the records from the database here"""
         try:
+            time.sleep(2)
             data, count = supabase.table("Events").select("*").execute()
             # =========== checking if the data is available here ======== //
             if not data:
