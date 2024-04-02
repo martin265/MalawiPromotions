@@ -43,6 +43,16 @@ class EventsPage(ft.Container):
                                             )
                                         ]
                                     )
+                                ),
+
+
+                                # ================= the container for the events here ======== //
+                                ft.Container(
+                                    content=ft.Column(
+                                        controls=[
+                                            self.all_events
+                                        ]
+                                    )
                                 )
 
                             ]
