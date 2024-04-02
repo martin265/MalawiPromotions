@@ -12,6 +12,7 @@ class ArtistPage(ft.View):
                 content=ft.Column(
                     controls=[
                         ft.Container(
+                            adaptive=True,
                             gradient=ft.LinearGradient(
                                 colors=[
                                     ft.colors.SURFACE_VARIANT,
@@ -24,6 +25,7 @@ class ArtistPage(ft.View):
                             content=ft.Column(
                                 controls=[
                                     ft.Container(
+                                        adaptive=True,
                                         margin=ft.margin.all(10),
                                         content=ft.Row(
                                             controls=[
@@ -42,14 +44,16 @@ class ArtistPage(ft.View):
                                     # ============ container for the page header will be here ======= //
                                     ft.Container(
                                         padding=ft.padding.only(top=30),
+                                        adaptive=True,
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
                                             controls=[
                                                 ft.Text(
-                                                    "check out artists",
+                                                    "check out artists".capitalize(),
                                                     size=30,
                                                     weight=ft.FontWeight.BOLD,
-                                                    color="#212121"
+                                                    color="#212121",
+
                                                 )
                                             ]
                                         )
