@@ -125,7 +125,10 @@ class ArtistPage(ft.View):
                                                 content=ft.Row(
                                                     controls=[
                                                         ft.Text(
-                                                            f"{element["first_name"]}"
+                                                            f"{element["first_name"]}",
+                                                            color="white",
+                                                            size=30,
+                                                            weight=ft.FontWeight.BOLD
                                                         )
                                                     ]
                                                 )
