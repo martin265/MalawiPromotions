@@ -114,6 +114,5 @@ class ArtistPage(ft.View):
                             ]
                         )
                     )
-
         except Exception as ex:
             print("something wrong at {}".format(ex))
