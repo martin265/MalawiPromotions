@@ -6,6 +6,7 @@ class ArtistPage(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/artist")
         self.all_artists = ft.Column([])
+        self.artist_details = ft.Text()
         self.controls.append(
             ft.SafeArea(
                 adaptive=True,
@@ -88,25 +89,7 @@ class ArtistPage(ft.View):
                 # first_names = [artist['first_name'] for artist in data_list]
 
                 for element in data_list:
-                    ft.SafeArea(
-                        content=ft.Column(
-                            controls=[
-                                ft.Container(
-                                    content=ft.Column(
-                                        controls=[
-                                            ft.Container(
-                                                content=ft.Row(
-                                                    controls=[
-                                                        ft.Text("hello")
-                                                    ]
-                                                )
-                                            )
-                                        ]
-                                    )
-                                )
-                            ]
-                        )
-                    )
+
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
