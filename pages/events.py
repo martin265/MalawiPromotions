@@ -32,22 +32,10 @@ class EventsPage(ft.Container):
                                     )
                                 ),
 
-                                # =============== // the container for the icon will be here ===== //
-                                ft.Container(
-                                    content=ft.Row(
-                                        alignment=ft.MainAxisAlignment.CENTER,
-                                        controls=[
-                                            ft.Icon(
-                                                ft.icons.EVENT_AVAILABLE_ROUNDED,
-                                                size=30
-                                            )
-                                        ]
-                                    )
-                                ),
-
 
                                 # ================= the container for the events here ======== //
                                 ft.Container(
+                                    margin=ft.margin.only(top=20),
                                     content=ft.Column(
                                         controls=[
                                             self.all_events
