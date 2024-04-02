@@ -58,6 +58,18 @@ class ArtistPage(ft.View):
                                                 )
                                             ]
                                         )
+                                    ),
+
+                                    # ================ // container for the details here ===== //
+                                    ft.Container(
+                                        margin=ft.margin.only(top=40),
+                                        content=ft.Row(
+                                            controls=[
+                                                ft.Text(
+                                                    f"{self.artist_details}"
+                                                )
+                                            ]
+                                        )
                                     )
                                 ]
                             )
@@ -89,7 +101,7 @@ class ArtistPage(ft.View):
                 # first_names = [artist['first_name'] for artist in data_list]
 
                 for element in data_list:
-
+                    self.artist_details = element
 
         except Exception as ex:
             print("something wrong at {}".format(ex))
