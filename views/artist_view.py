@@ -13,6 +13,8 @@ class ArtistPage(ft.View):
             ft.SafeArea(
                 adaptive=True,
                 content=ft.Column(
+                    scroll=ft.ScrollMode.HIDDEN,
+                    height=self.page.height,
                     controls=[
                         ft.Container(
                             adaptive=True,
@@ -69,6 +71,7 @@ class ArtistPage(ft.View):
                         ft.Container(
                             margin=ft.margin.only(top=10),
                             content=ft.Column(
+
                                 controls=[
                                     self.all_artists
                                 ]
