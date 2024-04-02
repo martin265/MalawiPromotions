@@ -77,12 +77,12 @@ class EventsPage(ft.Container):
                                 end=ft.alignment.bottom_center
                             ),
                             border=ft.border.all(0.8, "#eceff1"),
-                            border_radius=ft.border_radius.all(8),
+                            border_radius=ft.border_radius.all(10),
                             content=ft.Column(
                                 controls=[
                                     # ========= container for the icon will be here ==== //
                                     ft.Container(
-                                        bgcolor="#353535",
+                                        bgcolor="#424242",
                                         padding=ft.padding.only(top=40),
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
