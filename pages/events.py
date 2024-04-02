@@ -1,6 +1,7 @@
 import flet as ft
 from config.config import supabase
 
+
 class EventsPage(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
@@ -51,10 +52,12 @@ class EventsPage(ft.Container):
             )
         )
 
+        self.fetch_all_events()
 
     def fetch_all_events(self):
+        """function will be used to fetch the records from the database here"""
         try:
-            data, count = supabase.table("Artists").select("*").execute()
+            data, count = supabase.table("Events").select("*").execute()
             # =========== checking if the data is available here ======== //
             if not data:
                 print("no available records")
@@ -67,9 +70,27 @@ class EventsPage(ft.Container):
                     self.all_events.controls.append(
                         ft.Container(
                             adaptive=True,
+                            gradient=ft.LinearGradient(
+                                colors=[
+                                    "#0078D9",
+                                    "#009CDC"
+                                ],
+                                begin=ft.alignment.top_left,
+                                end=ft.alignment.bottom_center
+                            ),
+                            border_radius=ft.border_radius.all(8),
                             content=ft.Column(
                                 controls=[
-
+                                    # ========= container for the icon will be here ==== //
+                                    ft.Container(
+                                        content=ft.Row(
+                                            controls=[
+                                                ft.Icon(
+                                                    ft.icons.CALENDAR_MONTH_ROUNDED
+                                                )
+                                            ]
+                                        )
+                                    )
                                 ]
                             )
                         )
