@@ -70,8 +70,8 @@ class EventsPage(ft.Container):
                             adaptive=True,
                             gradient=ft.LinearGradient(
                                 colors=[
-                                    "#0078D9",
-                                    "#009CDC"
+                                    "#282828",
+                                    "#353535"
                                 ],
                                 begin=ft.alignment.top_left,
                                 end=ft.alignment.bottom_center
@@ -81,10 +81,14 @@ class EventsPage(ft.Container):
                                 controls=[
                                     # ========= container for the icon will be here ==== //
                                     ft.Container(
+                                        padding=ft.padding.only(top=40),
                                         content=ft.Row(
+                                            alignment=ft.MainAxisAlignment.CENTER,
                                             controls=[
                                                 ft.Icon(
-                                                    ft.icons.CALENDAR_MONTH_ROUNDED
+                                                    ft.icons.CALENDAR_MONTH_ROUNDED,
+                                                    size=40,
+                                                    color="white"
                                                 )
                                             ]
                                         )
