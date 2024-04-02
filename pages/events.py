@@ -87,10 +87,8 @@ class EventsPage(ft.Container):
                                         content=ft.Row(
                                             alignment=ft.MainAxisAlignment.CENTER,
                                             controls=[
-                                                ft.Icon(
-                                                    ft.icons.CALENDAR_MONTH_ROUNDED,
-                                                    size=40,
-                                                    color="white"
+                                                ft.Image(
+                                                    src="https://cdn-icons-png.flaticon.com/256/9292/9292417.png"
                                                 )
                                             ]
                                         )
