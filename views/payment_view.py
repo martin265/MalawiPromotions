@@ -1,5 +1,6 @@
 import flet as ft
 from config.config import supabase
+from pages.events import EventsPage
 
 
 class PaymentView(ft.View):
@@ -83,7 +84,7 @@ class PaymentView(ft.View):
                 )
             )
         ]
-        self.fetch_current_id()
+
 
     def view_pop(self, e):
         """the function to pop out the views will be here"""
@@ -91,6 +92,4 @@ class PaymentView(ft.View):
         top_view = self.page.views[-1]
         self.page.go(top_view.route)
 
-    def fetch_current_id(self):
-        self.current_id = self.current_id
-        print(self.current_id)
+
