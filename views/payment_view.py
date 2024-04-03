@@ -1,6 +1,5 @@
 import flet as ft
 from config.config import supabase
-from pages.events import EventsPage
 
 
 class PaymentView(ft.View):

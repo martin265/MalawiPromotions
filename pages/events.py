@@ -1,13 +1,98 @@
 import flet as ft
 from config.config import supabase
 import time
-from views.payment_view import PaymentView
+
+# from views.payment_view import PaymentView
 
 
-# class PaymentView(ft.View):
-#     def __init__(self, page: ft.Page):
-#         super().__init__(route="/payment")
-#         self.page = page
+class PaymentView(ft.View):
+    def __init__(self, page: ft.Page):
+        super().__init__(route="/payment")
+        self.page = page
+        self.all_artists = ft.Column([])
+        self.artist_details = ft.Text()
+        self.page.auto_scroll = True
+        self.controls = [
+            ft.SafeArea(
+                maintain_bottom_view_padding=True,
+                adaptive=True,
+                content=ft.Column(
+                    height=self.page.height,
+                    scroll=ft.ScrollMode.ADAPTIVE,
+
+                    controls=[
+                        ft.Container(
+                            adaptive=True,
+                            gradient=ft.LinearGradient(
+                                colors=[
+                                    ft.colors.SURFACE_VARIANT,
+                                    ft.colors.SURFACE_VARIANT
+                                ],
+                                begin=ft.alignment.top_left,
+                                end=ft.alignment.bottom_center
+                            ),
+                            border_radius=ft.border_radius.all(10),
+                            content=ft.Column(
+                                controls=[
+                                    ft.Container(
+                                        adaptive=True,
+                                        margin=ft.margin.all(10),
+                                        content=ft.Row(
+                                            controls=[
+                                                ft.IconButton(
+                                                    bgcolor="#212121",
+                                                    icon_size=30,
+                                                    icon=ft.icons.ARROW_BACK_ROUNDED,
+                                                    on_click=self.view_pop,
+                                                    icon_color="white"
+                                                )
+                                            ]
+                                        )
+                                    ),
+
+                                    # ============ container for the page header will be here ======= //
+                                    ft.Container(
+                                        padding=ft.padding.only(top=30, bottom=20),
+                                        adaptive=True,
+                                        content=ft.Row(
+                                            alignment=ft.MainAxisAlignment.CENTER,
+                                            controls=[
+                                                ft.Text(
+                                                    "buy ticket".capitalize(),
+                                                    size=30,
+                                                    weight=ft.FontWeight.BOLD,
+                                                    color="#412728",
+
+                                                )
+                                            ]
+                                        )
+                                    ),
+
+                                ]
+                            )
+                        ),
+
+                        # ================ // container for the details here ===== //
+                        ft.Container(
+                            margin=ft.margin.only(top=10, bottom=10),
+                            content=ft.Column(
+                                controls=[
+                                    ft.Text(
+                                        f"{self.page.route}"
+                                    )
+                                ]
+                            )
+                        )
+                    ]
+                )
+            )
+        ]
+
+    def view_pop(self, e):
+        """the function to pop out the views will be here"""
+        self.page.views.pop()
+        top_view = self.page.views[-1]
+        self.page.go(top_view.route)
 
 
 class EventsPage(ft.Container):
@@ -17,6 +102,7 @@ class EventsPage(ft.Container):
         self.all_events = ft.Column([])
         self.fetch_all_events()
         self.page.on_route_change = self.router
+        self.payment_view = PaymentView(page=self.page)
         self.current_id = ft.Text()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
@@ -74,7 +160,6 @@ class EventsPage(ft.Container):
             adaptive=True,
             content=ft.Container(
                 expand=True,
-
                 content=ft.Column(
                     controls=[
                         ft.Container(
@@ -130,7 +215,17 @@ class EventsPage(ft.Container):
             data, count = supabase.table("Events").select("*").execute()
             # =========== checking if the data is available here ======== //
             if not data:
-                print("no available records")
+                self.page.snack_bar = ft.SnackBar(
+                    content=ft.Row(
+                        controls=[
+                            ft.Text(
+                                "No available events"
+                            )
+                        ]
+                    )
+                )
+                self.page.snack_bar.open = True
+                self.page.update()
             else:
                 data_tuple = data
                 data_list = data_tuple[1]
@@ -250,7 +345,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=self.page.go("/payment")
+                                                                on_click=lambda e: self.page.go("/payment")
                                                             )
                                                         ]
                                                     )
@@ -278,7 +373,7 @@ class EventsPage(ft.Container):
     def current_id_func(self, e):
         self.current_id = e.control.data["id"]
         self.event_name.value = e.control.data["event_name"]
-        print(self.event_name.value)
+        print(self.current_id)
         # =========== the payment modal will be shown here
         self.page.dialog = self.payment_modal
         self.payment_modal.open = True
@@ -287,7 +382,6 @@ class EventsPage(ft.Container):
     def router(self, route):
         """the button"""
         if self.page.route == "/payment":
-            payment_view = PaymentView(page=self.page)
-            self.page.views.append(payment_view)
+            self.page.views.append(self.payment_view)
 
         self.page.update()
