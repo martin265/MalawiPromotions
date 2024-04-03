@@ -85,7 +85,6 @@ class PaymentView(ft.View):
                 )
             )
         ]
-        self.fetch_current_id()
 
     def view_pop(self, e):
         """the function to pop out the views will be here"""
@@ -105,7 +104,6 @@ class EventsPage(ft.Container):
         self.all_events = ft.Column([])
         self.fetch_all_events()
         self.current_id = ft.Text()
-        self.payment_view = PaymentView(page=page)
         self.page.on_route_change = self.router
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
@@ -307,6 +305,7 @@ class EventsPage(ft.Container):
     def router(self, route):
         """the button"""
         if self.page.route == "/payment":
-            self.page.views.append(self.payment_view)
+            payment_view = PaymentView(page=self.page)
+            self.page.views.append(payment_view)
 
         self.page.update()
