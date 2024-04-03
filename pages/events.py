@@ -3,101 +3,6 @@ from config.config import supabase
 import time
 
 
-class PaymentView(ft.View):
-    def __init__(self, page: ft.Page):
-        super().__init__(route="/payment")
-        self.page = page
-        self.all_artists = ft.Column([])
-        self.artist_details = ft.Text()
-        self.page.auto_scroll = True
-        self.current_id = ft.Text()
-        self.events_page = EventsPage(page=page)
-        self.controls = [
-            ft.SafeArea(
-                maintain_bottom_view_padding=True,
-                adaptive=True,
-                content=ft.Column(
-                    height=self.page.height,
-                    scroll=ft.ScrollMode.ADAPTIVE,
-
-                    controls=[
-                        ft.Container(
-                            adaptive=True,
-                            gradient=ft.LinearGradient(
-                                colors=[
-                                    ft.colors.SURFACE_VARIANT,
-                                    ft.colors.SURFACE_VARIANT
-                                ],
-                                begin=ft.alignment.top_left,
-                                end=ft.alignment.bottom_center
-                            ),
-                            border_radius=ft.border_radius.all(10),
-                            content=ft.Column(
-                                controls=[
-                                    ft.Container(
-                                        adaptive=True,
-                                        margin=ft.margin.all(10),
-                                        content=ft.Row(
-                                            controls=[
-                                                ft.IconButton(
-                                                    bgcolor="#212121",
-                                                    icon_size=30,
-                                                    icon=ft.icons.ARROW_BACK_ROUNDED,
-                                                    on_click=self.view_pop,
-                                                    icon_color="white"
-                                                )
-                                            ]
-                                        )
-                                    ),
-
-                                    # ============ container for the page header will be here ======= //
-                                    ft.Container(
-                                        padding=ft.padding.only(top=30, bottom=20),
-                                        adaptive=True,
-                                        content=ft.Row(
-                                            alignment=ft.MainAxisAlignment.CENTER,
-                                            controls=[
-                                                ft.Text(
-                                                    "buy ticket".capitalize(),
-                                                    size=30,
-                                                    weight=ft.FontWeight.BOLD,
-                                                    color="#412728",
-
-                                                )
-                                            ]
-                                        )
-                                    ),
-
-                                ]
-                            )
-                        ),
-
-                        # ================ // container for the details here ===== //
-                        ft.Container(
-                            margin=ft.margin.only(top=10, bottom=10),
-                            content=ft.Column(
-                                controls=[
-                                    self.all_artists
-                                ]
-                            )
-                        )
-                    ]
-                )
-            )
-        ]
-        self.fetch_current_id()
-
-    def view_pop(self, e):
-        """the function to pop out the views will be here"""
-        self.page.views.pop()
-        top_view = self.page.views[-1]
-        self.page.go(top_view.route)
-
-    def fetch_current_id(self):
-        self.current_id = self.events_page.current_id
-        print(self.current_id)
-
-
 class EventsPage(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
@@ -105,7 +10,6 @@ class EventsPage(ft.Container):
         self.all_events = ft.Column([])
         self.fetch_all_events()
         self.current_id = ft.Text()
-        self.page.on_route_change = self.router
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -148,10 +52,12 @@ class EventsPage(ft.Container):
         )
 
         self.payment_modal = ft.AlertDialog(
+            adaptive=True,
             content=ft.SafeArea(
                 content=ft.Column(
                     controls=[
                         ft.Container(
+                            expand=True,
                             content=ft.Row(
                                 controls=[
                                     ft.Text(
@@ -324,10 +230,10 @@ class EventsPage(ft.Container):
         self.payment_modal.open = True
         self.page.update()
 
-    def router(self, route):
-        """the button"""
-        if self.page.route == "/payment":
-            payment_view = PaymentView(page=self.page)
-            self.page.views.append(payment_view)
-
-        self.page.update()
+    # def router(self, route):
+    #     """the button"""
+    #     if self.page.route == "/payment":
+    #         payment_view = PaymentView(page=self.page)
+    #         self.page.views.append(payment_view)
+    #
+    #     self.page.update()
