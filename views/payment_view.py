@@ -1,6 +1,5 @@
 import flet as ft
 from config.config import supabase
-from pages.events import EventsPage
 
 
 class PaymentView(ft.View):
@@ -11,7 +10,6 @@ class PaymentView(ft.View):
         self.artist_details = ft.Text()
         self.page.auto_scroll = True
         self.current_id = ft.Text()
-        self.events_page = EventsPage(page=page)
         self.controls = [
             ft.SafeArea(
                 maintain_bottom_view_padding=True,
@@ -94,5 +92,5 @@ class PaymentView(ft.View):
         self.page.go(top_view.route)
 
     def fetch_current_id(self):
-        self.current_id = self.events_page.current_id
+        self.current_id = element
         print(self.current_id)
