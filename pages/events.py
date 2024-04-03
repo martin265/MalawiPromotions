@@ -1,6 +1,7 @@
 import flet as ft
 from config.config import supabase
 import time
+from views.payment_view import PaymentView
 
 
 class EventsPage(ft.Container):
@@ -10,6 +11,7 @@ class EventsPage(ft.Container):
         self.all_events = ft.Column([])
         self.fetch_all_events()
         self.current_id = ft.Text()
+        self.payment_view = PaymentView(page=page)
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -116,7 +118,6 @@ class EventsPage(ft.Container):
                                                     ]
                                                 ),
 
-
                                                 ft.Row(
                                                     controls=[
                                                         ft.Icon(
@@ -208,10 +209,9 @@ class EventsPage(ft.Container):
         self.current_id = e.control.data["id"]
         print(f"{self.current_id}")
 
-
     def router(self, route):
-        if self.page.route == "/artist":
-            self.page.views.append(self.artist_page)
+        """the button"""
+        if self.page.route == "/payment":
+            self.page.views.append(self.payment_view)
 
         self.page.update()
-

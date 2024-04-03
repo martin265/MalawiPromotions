@@ -2,9 +2,9 @@ import flet as ft
 from config.config import supabase
 
 
-class PaymentPage(ft.View):
+class PaymentView(ft.View):
     def __init__(self, page: ft.Page):
-        super().__init__(route="/artist")
+        super().__init__(route="/payment")
         self.page = page
         self.all_artists = ft.Column([])
         self.artist_details = ft.Text()
