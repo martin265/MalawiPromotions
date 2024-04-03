@@ -146,7 +146,24 @@ class EventsPage(ft.Container):
                 ]
             )
         )
-        self.show_id()
+
+        self.payment_modal = ft.AlertDialog(
+            content=ft.SafeArea(
+                content=ft.Column(
+                    controls=[
+                        ft.Container(
+                            content=ft.Row(
+                                controls=[
+                                    ft.Text(
+                                        "make your payment here".capitalize()
+                                    )
+                                ]
+                            )
+                        )
+                    ]
+                )
+            )
+        )
 
     def fetch_all_events(self):
         """function will be used to fetch the records from the database here"""
@@ -275,7 +292,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=lambda e: self.page.go("/payment")
+                                                                on_click=lambda e: self.current_id_func
                                                             )
                                                         ]
                                                     )
@@ -302,11 +319,10 @@ class EventsPage(ft.Container):
 
     def current_id_func(self, e):
         self.current_id = e.control.data["id"]
-        print(f"{self.current_id}")
-
-    def show_id(self):
-        id_take = self.current_id_func
-        print(id_take)
+        # =========== the payment modal will be shown here
+        self.page.dialog = self.payment_modal
+        self.payment_modal.open = True
+        self.page.update()
 
     def router(self, route):
         """the button"""
