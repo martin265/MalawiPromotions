@@ -2,16 +2,30 @@ import flet as ft
 from config.config import supabase
 import time
 
+
 # from views.payment_view import PaymentView
+
+class Router:
+    def __init__(self, page: ft.Page):
+        super().__init__()
+        self.page = page
+        self.payment_view = PaymentView(page=page)
+
+    def router(self, route):
+        """the button"""
+        if self.page.route == "/payment":
+            self.page.views.append(self.payment_view)
+
+        self.page.update()
 
 
 class PaymentView(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__(route="/payment")
         self.page = page
-        self.all_artists = ft.Column([])
-        self.artist_details = ft.Text()
         self.page.auto_scroll = True
+        # ============ calling the other class here ========== //
+        self.event = EventsPage(page=page)
         self.controls = [
             ft.SafeArea(
                 maintain_bottom_view_padding=True,
@@ -78,7 +92,7 @@ class PaymentView(ft.View):
                             content=ft.Column(
                                 controls=[
                                     ft.Text(
-                                        f"{self.page.route}"
+                                        f""
                                     )
                                 ]
                             )
@@ -101,8 +115,8 @@ class EventsPage(ft.Container):
         self.page = page
         self.all_events = ft.Column([])
         self.fetch_all_events()
-        self.page.on_route_change = self.router
-        self.payment_view = PaymentView(page=self.page)
+        self.router = Router(page=page)
+        self.page.on_route_change = self.router.router
         self.current_id = ft.Text()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
@@ -142,69 +156,6 @@ class EventsPage(ft.Container):
                         )
                     )
                 ]
-            )
-        )
-
-        # ============= the input fields will be here =============== //
-        self.event_name = ft.Text(
-            size=20,
-            color="#7F4D3E",
-            weight=ft.FontWeight.BOLD
-        )
-
-        self.first_name = ft.TextField(
-            width=500,
-        )
-
-        self.payment_modal = ft.AlertDialog(
-            adaptive=True,
-            content=ft.Container(
-                expand=True,
-                content=ft.Column(
-                    controls=[
-                        ft.Container(
-                            content=ft.Row(
-                                alignment=ft.MainAxisAlignment.CENTER,
-                                controls=[
-                                    ft.Text(
-                                        "make your payment here".capitalize(),
-                                        color="#412728",
-                                        weight=ft.FontWeight.BOLD,
-                                        size=20
-                                    )
-                                ]
-                            )
-                        ),
-                        # ============== // for the icon // ================ //
-                        ft.Container(
-                            content=ft.Row(
-                                alignment=ft.MainAxisAlignment.CENTER,
-                                controls=[
-                                    ft.Icon(ft.icons.PAYMENT_ROUNDED, size=30, color="#412728")
-                                ]
-                            )
-                        ),
-
-                        ft.Container(
-                            padding=ft.padding.only(top=30),
-                            content=ft.Row(
-                                alignment=ft.MainAxisAlignment.CENTER,
-                                controls=[
-                                    self.event_name
-                                ]
-                            )
-                        ),
-
-                        # =============== // container for the textfield // ========== //
-                        ft.Container(
-                            content=ft.Row(
-                                controls=[
-                                    self.first_name,
-                                ]
-                            )
-                        )
-                    ]
-                )
             )
         )
 
@@ -370,18 +321,4 @@ class EventsPage(ft.Container):
             self.page.snack_bar.open = True
             self.page.update()
 
-    def current_id_func(self, e):
-        self.current_id = e.control.data["id"]
-        self.event_name.value = e.control.data["event_name"]
-        print(self.current_id)
-        # =========== the payment modal will be shown here
-        self.page.dialog = self.payment_modal
-        self.payment_modal.open = True
-        self.page.update()
 
-    def router(self, route):
-        """the button"""
-        if self.page.route == "/payment":
-            self.page.views.append(self.payment_view)
-
-        self.page.update()
