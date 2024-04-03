@@ -141,6 +141,38 @@ class EventsPage(ft.Container):
 
         self.fetch_all_events()
 
+        # =============== the input fields for the client ========== //
+        self.first_name = ft.TextField(
+            label="first name".capitalize(),
+            hint_text="enter first name",
+            keyboard_type=ft.KeyboardType.TEXT,
+            border_radius=ft.border_radius.all(20)
+        )
+
+        self.last_name = ft.TextField(
+            label="last name".capitalize(),
+            hint_text="enter last name",
+            keyboard_type=ft.KeyboardType.TEXT
+        )
+
+        self.age = ft.TextField(
+            label="age".capitalize(),
+            hint_text="enter your age",
+            keyboard_type=ft.KeyboardType.NUMBER
+        )
+
+        self.username = ft.TextField(
+            label="first name".capitalize(),
+            hint_text="enter first name",
+            keyboard_type=ft.KeyboardType.TEXT
+        )
+
+        self.email = ft.TextField(
+            label="email".capitalize(),
+            hint_text="enter your email",
+            keyboard_type=ft.KeyboardType.EMAIL
+        )
+
     def fetch_all_events(self):
         """function will be used to fetch the records from the database here"""
         try:
@@ -324,10 +356,23 @@ class EventsPage(ft.Container):
     def get_current_id(self, e):
         self.current_id = e.control.data["id"]
         payment_dialog = ft.AlertDialog(
-            content=ft.Container(
-                content=ft.TextField(
-                    label="first name".capitalize(),
-                    width=500
+            content=ft.SafeArea(
+                content=ft.Column(
+                    controls=[
+                        ft.Container(
+                            expand=True,
+                            width=self.page.width,
+                            content=ft.Column(
+                                controls=[
+                                    self.first_name,
+                                    self.last_name,
+                                    self.age,
+                                    self.username,
+                                    self.email
+                                ]
+                            )
+                        )
+                    ]
                 )
             )
         )
