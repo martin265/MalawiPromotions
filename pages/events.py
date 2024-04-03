@@ -208,3 +208,10 @@ class EventsPage(ft.Container):
         self.current_id = e.control.data["id"]
         print(f"{self.current_id}")
 
+
+    def router(self, route):
+        if self.page.route == "/artist":
+            self.page.views.append(self.artist_page)
+
+        self.page.update()
+
