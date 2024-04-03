@@ -292,7 +292,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=lambda e: self.current_id_func
+                                                                on_click=self.current_id_func
                                                             )
                                                         ]
                                                     )
