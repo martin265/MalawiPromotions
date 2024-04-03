@@ -58,7 +58,7 @@ class PaymentView(ft.View):
                                                     "buy ticket".capitalize(),
                                                     size=30,
                                                     weight=ft.FontWeight.BOLD,
-                                                    color="#212121",
+                                                    color="#412728",
 
                                                 )
                                             ]
