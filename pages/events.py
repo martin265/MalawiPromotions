@@ -1,22 +1,5 @@
 import flet as ft
 from config.config import supabase
-import time
-
-
-# from views.payment_view import PaymentView
-
-class Router:
-    def __init__(self, page: ft.Page):
-        super().__init__()
-        self.page = page
-        self.payment_view = PaymentView(page=page)
-
-    def router(self, route):
-        """the button"""
-        if self.page.route == "/payment":
-            self.page.views.append(self.payment_view)
-
-        self.page.update()
 
 
 class PaymentView(ft.View):
@@ -24,8 +7,9 @@ class PaymentView(ft.View):
         super().__init__(route="/payment")
         self.page = page
         self.page.auto_scroll = True
+        events_page = EventsPage(page=page)
+        print(events_page.current_id.value)
         # ============ calling the other class here ========== //
-        self.event = EventsPage(page=page)
         self.controls = [
             ft.SafeArea(
                 maintain_bottom_view_padding=True,
@@ -91,9 +75,7 @@ class PaymentView(ft.View):
                             margin=ft.margin.only(top=10, bottom=10),
                             content=ft.Column(
                                 controls=[
-                                    ft.Text(
-                                        f""
-                                    )
+                                    events_page.current_id
                                 ]
                             )
                         )
@@ -114,10 +96,8 @@ class EventsPage(ft.Container):
         super().__init__()
         self.page = page
         self.all_events = ft.Column([])
-        self.fetch_all_events()
-        self.router = Router(page=page)
-        self.page.on_route_change = self.router.router
         self.current_id = ft.Text()
+        self.page.on_route_change = self.router
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -159,10 +139,11 @@ class EventsPage(ft.Container):
             )
         )
 
+        self.fetch_all_events()
+
     def fetch_all_events(self):
         """function will be used to fetch the records from the database here"""
         try:
-            time.sleep(2)
             data, count = supabase.table("Events").select("*").execute()
             # =========== checking if the data is available here ======== //
             if not data:
@@ -296,7 +277,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=lambda e: self.page.go("/payment")
+                                                                on_click=self.get_current_id
                                                             )
                                                         ]
                                                     )
@@ -309,16 +290,51 @@ class EventsPage(ft.Container):
                         )
                     )
         except Exception as ex:
-            self.page.snack_bar = ft.SnackBar(
-                content=ft.Row(
-                    controls=[
-                        ft.Text(
-                            'something went wrong at {}'.format(ex)
-                        )
-                    ]
+            payment_dialog = ft.AlertDialog(
+                content=ft.Container(
+                    content=ft.Row(
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        controls=[
+                            ft.Text(
+                                "no internet connection".capitalize(),
+                                weight=ft.FontWeight.BOLD,
+                                size=20,
+                            ),
+
+                            ft.Icon(
+                                ft.icons.ERROR_ROUNDED,
+                                color="red"
+                            )
+                        ]
+                    )
                 )
             )
-            self.page.snack_bar.open = True
+            self.page.dialog = payment_dialog
+            payment_dialog.open = True
             self.page.update()
+
+    def router(self, e):
+        self.current_id = e.control.data["id"]
+        if self.page.route == "/payment":
+            payment = PaymentView(page=self.page)
+            self.page.views.append(payment)
+
+        self.page.update()
+
+    def get_current_id(self, e):
+        self.current_id = e.control.data["id"]
+        payment_dialog = ft.AlertDialog(
+            content=ft.Container(
+                content=ft.TextField(
+                    label="first name".capitalize()
+                )
+            )
+        )
+        self.page.dialog = payment_dialog
+        payment_dialog.open = True
+        self.page.update()
+
+
+
 
 
