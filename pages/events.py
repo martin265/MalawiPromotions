@@ -12,6 +12,7 @@ class EventsPage(ft.Container):
         self.fetch_all_events()
         self.current_id = ft.Text()
         self.payment_view = PaymentView(page=page)
+        self.page.on_route_change = self.router
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -180,7 +181,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=self.current_id_func
+                                                                on_click=lambda e: self.page.go("/payment")
                                                             )
                                                         ]
                                                     )
