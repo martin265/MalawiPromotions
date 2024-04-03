@@ -326,7 +326,8 @@ class EventsPage(ft.Container):
         payment_dialog = ft.AlertDialog(
             content=ft.Container(
                 content=ft.TextField(
-                    label="first name".capitalize()
+                    label="first name".capitalize(),
+                    width=500
                 )
             )
         )
