@@ -7,8 +7,8 @@ class PaymentView(ft.View):
         super().__init__(route="/payment")
         self.page = page
         self.page.auto_scroll = True
-        events_page = EventsPage(page=page)
-        print(events_page.current_id.value)
+        self.events_page = EventsPage(page=page)
+        print(self.events_page.current_id)
         # ============ calling the other class here ========== //
         self.controls = [
             ft.SafeArea(
@@ -75,7 +75,7 @@ class PaymentView(ft.View):
                             margin=ft.margin.only(top=10, bottom=10),
                             content=ft.Column(
                                 controls=[
-                                    events_page.current_id
+
                                 ]
                             )
                         )
@@ -96,8 +96,8 @@ class EventsPage(ft.Container):
         super().__init__()
         self.page = page
         self.all_events = ft.Column([])
-        self.current_id = ft.Text()
         self.page.on_route_change = self.router
+        self.current_id = ft.Text()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
             content=ft.Column(
@@ -140,6 +140,8 @@ class EventsPage(ft.Container):
         )
 
         self.fetch_all_events()
+
+        self.main_content = ft.Column([])
 
         # =============== the input fields for the client ========== //
         self.first_name = ft.TextField(
@@ -346,7 +348,6 @@ class EventsPage(ft.Container):
             self.page.update()
 
     def router(self, e):
-        self.current_id = e.control.data["id"]
         if self.page.route == "/payment":
             payment = PaymentView(page=self.page)
             self.page.views.append(payment)
@@ -355,30 +356,11 @@ class EventsPage(ft.Container):
 
     def get_current_id(self, e):
         self.current_id = e.control.data["id"]
-        payment_dialog = ft.AlertDialog(
-            content=ft.SafeArea(
-                content=ft.Column(
-                    controls=[
-                        ft.Container(
-                            expand=True,
-                            width=self.page.width,
-                            content=ft.Column(
-                                controls=[
-                                    self.first_name,
-                                    self.last_name,
-                                    self.age,
-                                    self.username,
-                                    self.email
-                                ]
-                            )
-                        )
-                    ]
-                )
-            )
-        )
-        self.page.dialog = payment_dialog
-        payment_dialog.open = True
-        self.page.update()
+        print(self.current_id)
+        if self.current_id:
+            self.page.go("/payment")
+
+
 
 
 
