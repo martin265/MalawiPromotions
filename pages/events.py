@@ -59,11 +59,15 @@ class EventsPage(ft.Container):
             weight=ft.FontWeight.BOLD
         )
 
-        self.first_name = ft.TextField()
+        self.first_name = ft.TextField(
+            width=500,
+        )
 
         self.payment_modal = ft.AlertDialog(
             adaptive=True,
             content=ft.Container(
+                expand=True,
+
                 content=ft.Column(
                     controls=[
                         ft.Container(
@@ -104,7 +108,6 @@ class EventsPage(ft.Container):
                             content=ft.Row(
                                 controls=[
                                     self.first_name,
-                                    self.first_name
                                 ]
                             )
                         )
