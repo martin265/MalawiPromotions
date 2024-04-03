@@ -92,5 +92,5 @@ class PaymentView(ft.View):
         self.page.go(top_view.route)
 
     def fetch_current_id(self):
-        self.current_id = element
+        self.current_id = self.current_id
         print(self.current_id)

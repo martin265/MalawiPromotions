@@ -1,6 +1,13 @@
 import flet as ft
 from config.config import supabase
 import time
+from views.payment_view import PaymentView
+
+
+# class PaymentView(ft.View):
+#     def __init__(self, page: ft.Page):
+#         super().__init__(route="/payment")
+#         self.page = page
 
 
 class EventsPage(ft.Container):
@@ -9,7 +16,7 @@ class EventsPage(ft.Container):
         self.page = page
         self.all_events = ft.Column([])
         self.fetch_all_events()
-
+        self.page.on_route_change = self.router
         self.current_id = ft.Text()
         # ============ the controls for the page will be here ========== //
         self.content = ft.SafeArea(
@@ -243,7 +250,7 @@ class EventsPage(ft.Container):
                                                                 data=element,
                                                                 text="purchase ticket".capitalize(),
                                                                 icon=ft.icons.SHOPPING_CART_ROUNDED,
-                                                                on_click=self.current_id_func
+                                                                on_click=self.page.go("/payment")
                                                             )
                                                         ]
                                                     )
@@ -277,10 +284,10 @@ class EventsPage(ft.Container):
         self.payment_modal.open = True
         self.page.update()
 
-    # def router(self, route):
-    #     """the button"""
-    #     if self.page.route == "/payment":
-    #         payment_view = PaymentView(page=self.page)
-    #         self.page.views.append(payment_view)
-    #
-    #     self.page.update()
+    def router(self, route):
+        """the button"""
+        if self.page.route == "/payment":
+            payment_view = PaymentView(page=self.page)
+            self.page.views.append(payment_view)
+
+        self.page.update()
