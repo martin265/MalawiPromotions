@@ -8,7 +8,7 @@ class PaymentView(ft.View):
         self.page = page
         self.page.auto_scroll = True
         self.events_page = EventsPage(page=page)
-        print(self.events_page.current_id)
+        print(self.events_page.get_current_id)
         # ============ calling the other class here ========== //
         self.controls = [
             ft.SafeArea(
@@ -356,9 +356,9 @@ class EventsPage(ft.Container):
 
     def get_current_id(self, e):
         self.current_id = e.control.data["id"]
-        print(self.current_id)
         if self.current_id:
             self.page.go("/payment")
+            return self.current_id
 
 
 
