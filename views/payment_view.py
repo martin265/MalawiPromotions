@@ -85,6 +85,7 @@ class PaymentView(ft.View):
                 )
             )
         ]
+        self.fetch_current_id()
 
     def view_pop(self, e):
         """the function to pop out the views will be here"""
