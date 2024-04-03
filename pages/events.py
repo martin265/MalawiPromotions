@@ -94,7 +94,7 @@ class PaymentView(ft.View):
         self.page.go(top_view.route)
 
     def fetch_current_id(self):
-        self.current_id = self.events_page.current_id_func
+        self.current_id = self.events_page.current_id
         print(self.current_id)
 
 
@@ -146,6 +146,7 @@ class EventsPage(ft.Container):
                 ]
             )
         )
+        self.show_id()
 
     def fetch_all_events(self):
         """function will be used to fetch the records from the database here"""
@@ -302,6 +303,10 @@ class EventsPage(ft.Container):
     def current_id_func(self, e):
         self.current_id = e.control.data["id"]
         print(f"{self.current_id}")
+
+    def show_id(self):
+        id_take = self.current_id_func
+        print(id_take)
 
     def router(self, route):
         """the button"""
