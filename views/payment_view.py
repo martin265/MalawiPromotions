@@ -55,7 +55,7 @@ class PaymentView(ft.View):
                                             alignment=ft.MainAxisAlignment.CENTER,
                                             controls=[
                                                 ft.Text(
-                                                    "check out artists".capitalize(),
+                                                    "buy ticket".capitalize(),
                                                     size=30,
                                                     weight=ft.FontWeight.BOLD,
                                                     color="#212121",
@@ -83,11 +83,8 @@ class PaymentView(ft.View):
             )
         ]
 
-
     def view_pop(self, e):
         """the function to pop out the views will be here"""
         self.page.views.pop()
         top_view = self.page.views[-1]
         self.page.go(top_view.route)
-
-
